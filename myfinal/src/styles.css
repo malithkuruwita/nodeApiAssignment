@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+body{
+    padding-top: 40px;
+    margin: 0;
+    background-color: grey;
+}
+*/
+
+body {
+
+    padding: 0px;
+    padding-top: 100px;
+    margin: 0;
+    background-color: grey;
+    height: 2000px;
+}
