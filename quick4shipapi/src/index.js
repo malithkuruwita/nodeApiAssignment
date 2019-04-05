@@ -1,11 +1,24 @@
 let express =  require('express')
 let app = express()
 
+const UserEndpoint = require('./routes/user')
+
+
 app.use((req,res,next) => {
     console.log(`${new Date().toString()} => ${req.originalUrl}`)
     next()
 })
 
+
+let path = require('path')
+
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+
+app.use(express.static('public'))
 
 //cros resources allow origin
 app.use((req,res,next) => {
@@ -24,16 +37,12 @@ app.use((req,res,next) => {
 
 
 
+app.get('/', (req,res) =>{
+    res.send('Hello from server')
+})
 
-let path = require('path')
+app.use('/user', UserEndpoint)
 
-let bodyParser = require('body-parser')
-
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-
-
-app.use(express.static('public'))
 
 //Handler for 404 - Resources not found
 app.use((req,res,next) =>{
@@ -46,6 +55,15 @@ app.use((err,req,res,next) => {
 
     res.sendFile(path.join(__dirname, '../public/500.html'))
 })
+
+
+
+
+
+
+
+
+
 
 const port = process.env.port || 3000
 app.listen(port, () => console.info(`Serrever has started on ${port}`))

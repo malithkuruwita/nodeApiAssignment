@@ -131,3 +131,31 @@ nav ul li a:hover{
         margin: 0;
     }
 }
+
+
+
+
+/* Dropdown Menu */
+nav ul li ul { 
+    position: absolute;
+    background: #fff;
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+    display: none; 
+    width: 125px;
+    margin-top:-10px;
+}
+nav ul li ul li { 
+    text-align: center;
+    width: 100%; 
+}
+nav ul li ul a { 
+    padding: 10px;
+    margin: 0px;
+}
+nav ul li:hover ul { 
+    display: block; 
+}
+
+

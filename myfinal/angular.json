@@ -24,12 +24,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/jquerymodel/css/basic.css"
             ],
             "scripts": [
-              "src/assets/jquerymodel/js/jquery.js",
-              "src/assets/jquerymodel/js/jquery.simplemodal.js",
-              "src/assets/jquerymodel/js/basic.js",
               "src/assets/js/modelsupport.js"
             ]
           },
