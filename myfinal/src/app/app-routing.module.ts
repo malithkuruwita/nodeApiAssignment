@@ -4,6 +4,7 @@ import { BestdealsComponent } from './bestdeals/bestdeals.component';
 import { DealsComponent } from './deals/deals.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AuthGuard } from './Shared/auth.guard';
 
 
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:'register', component: RegisterComponent
+  },
+  {
+    path:'resetpassword/:id', component: ResetpasswordComponent
   }
 ];
 

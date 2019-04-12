@@ -2,9 +2,23 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 const userSchema =  new Schema({
-    username: String,
-    email: String,
-    password: String
+    
+    method: {type: String,enum:['local','google','facebook'],required:true},
+    local: {
+        username: {type: String},
+        email: {type: String},
+        password: {type: String},
+        resetPasswordToken: String,
+        resetPasswordExpires: Date,
+    },
+    google: {
+        id:{type:String},
+        email:{type:String,lowercase:true}
+    },
+    facebook: {
+        id:{type:String},
+        email:{type:String,lowercase:true}
+    }
 })
 
 module.exports = mongoose.model('user', userSchema, 'users')

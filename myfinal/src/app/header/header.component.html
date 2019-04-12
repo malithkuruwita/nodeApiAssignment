@@ -12,24 +12,24 @@
 
             
 
-          <li><a href="#" routerLink="/deals" routerLinkActive="active">Deals</a></li>
-          <li><a href="#" routerLink="/best-deals" routerLinkActive="active">Beat Deals</a></li>
+          <li><a  routerLink="/deals" routerLinkActive="active">Deals</a></li>
+          <li><a  routerLink="/best-deals" routerLinkActive="active">Beat Deals</a></li>
 
-          <li> <a href="#">{{userName}}</a>
+          <li> <a routerLink="/deals" routerLinkActive="active">{{userData.username}}</a>
 
             <ul>
-                <li class="sub-menu-item" *ngIf="!_authService.loggedIn()"><a href="#" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+                <li class="sub-menu-item"  *ngIf="!_authService.loggedIn()"><a routerLink="/login" routerLinkActive="active"  >Login</a>
                 </li>
-                <li class="sub-menu-item" *ngIf="!_authService.loggedIn()"><a href="#" data-toggle="modal" data-target="#modalRegisterForm">Register</a>
+                <li class="sub-menu-item"  *ngIf="!_authService.loggedIn()"><a routerLink="/register" routerLinkActive="active" >Register</a>
                 </li>
-                <li class="sub-menu-item" style="cursor:pointer" *ngIf="_authService.loggedIn()"><a href="#" (click)="_authService.logoutUser()">Log Out</a>
+                <li class="sub-menu-item" style="cursor:pointer" *ngIf="_authService.loggedIn()"><a  (click)="_authService.logoutUser()">Log Out</a>
                 </li>
             </ul>
             
           </li>
 
-
-       
+          <!-- data-toggle="modal" data-target="#modalLoginForm" -->
+          <!-- data-toggle="modal" data-target="#modalRegisterForm" -->
         </ul>
       </nav>
       <div class="clearfix"></div>
@@ -38,11 +38,11 @@
   
   
   
-  
+  <!--
   <main>
+  -->
   
-  
-  <!-- login Modal -->
+  <!-- login 
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
@@ -57,11 +57,11 @@ aria-hidden="true">
 
         <div class="container-fluid">
             <div class="row">
-              <div class="col-xl-6 col-lg-6 customlogin">
+              <div class="col-xl-6 col-lg-6 customlogin bdr">
                 <section class="outer-wrapper">
                   <div class="inner-wrapper">
   
-                    <div id="log" class="login">
+                    <div id="log" class="login ">
   
                       <p style="color:black;margin-bottom: 12px;"> Log in to Quick4Ship</p>
                       <form>
@@ -135,10 +135,10 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+-->
 
 
-
-<!-- register model-->
+<!-- register 
 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
@@ -153,7 +153,7 @@ aria-hidden="true">
 
         <div class="container-fluid">
             <div class="row">
-              <div class="col-xl-6 col-lg-6 customlogin">
+              <div class="col-xl-6 col-lg-6 customlogin bdr">
                 <section class="outer-wrapper">
                   <div class="inner-wrapper">
   
@@ -230,22 +230,20 @@ aria-hidden="true">
 </div>
 </div>
   
+-->
   
   
   
-  
 
 
 
 
 
 
-
+<!---
   
   </main>
   
+-->
   
-  
-  <footer>
-    This is your footer.
-  </footer>
+ 

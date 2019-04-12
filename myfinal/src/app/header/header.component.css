@@ -159,3 +159,14 @@ nav ul li:hover ul {
 }
 
 
+
+/*add boder right to login register model*/
+.bdr{
+    border-right: 2px solid #000000;
+}
+@media(max-width: 991px){
+    .bdr{
+        border-right: none;
+    }
+}
+

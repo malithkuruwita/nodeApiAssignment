@@ -1,7 +1,21 @@
 let express =  require('express')
 let app = express()
 
+require('./passport')
 const UserEndpoint = require('./routes/user')
+
+const mongoose = require('mongoose')
+//mongoose settings
+mongoose.set('useNewUrlParser', true)
+mongoose.set('useFindAndModify', false)
+mongoose.set('useCreateIndex', true)
+//connect mongo db
+mongoose.connect('mongodb://localhost/mongoDemo')
+.then(() => console.log('Conected to db...'))
+.catch((err) => console.log('Something went wrong',err))
+
+
+
 
 
 app.use((req,res,next) => {

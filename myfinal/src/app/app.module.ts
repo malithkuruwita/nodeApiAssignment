@@ -11,6 +11,7 @@ import { BestdealsComponent } from './bestdeals/bestdeals.component';
 import { DealsComponent } from './deals/deals.component';
 
 import { TokenInterceptorService } from './Shared/token-interceptor.service';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TokenInterceptorService } from './Shared/token-interceptor.service';
     RegisterComponent,
     LoginComponent,
     BestdealsComponent,
-    DealsComponent
+    DealsComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,
