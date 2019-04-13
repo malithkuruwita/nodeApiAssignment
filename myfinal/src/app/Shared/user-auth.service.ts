@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UserAuthService {
 
 
   selectedUser: User;
@@ -14,6 +14,7 @@ export class AuthService {
   private _loginUrl = "http://localhost:3000/user/login"
   private _resetUrl = "http://localhost:3000/user/resetpassword"
   private _confirmResetUrl = "http://localhost:3000/user/reset"
+  private _googleAuth = "http://localhost:3000/user/oauth/google"
 
   private subject = new Subject<any>();
 
@@ -35,6 +36,10 @@ export class AuthService {
     return this.http.post<any>(this._confirmResetUrl, user)
   }
 
+  GoogleSignin(token){
+    return this.http.post<any>(this._googleAuth, { access_token: token })
+  }
+
   loggedIn(){
     return !!localStorage.getItem('token')
   }
@@ -52,6 +57,7 @@ export class AuthService {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     localStorage.removeItem('username')
+    localStorage.removeItem('account_type')
     this.sendReload('My Account')
     this._router.navigate(['/deals'])
   }

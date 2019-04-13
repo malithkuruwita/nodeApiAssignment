@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Shared/auth.service';
+import { UserAuthService } from '../Shared/user-auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService,FacebookLoginProvider,GoogleLoginProvider,LinkedinLoginProvider } from 'angular-6-social-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   errorData = []
   resetData:any = []
 
-  constructor(private _auth: AuthService, private _router: Router, private route: ActivatedRoute) { }
+  constructor(private _auth: UserAuthService, private _router: Router, private route: ActivatedRoute, private socialAuthService: AuthService) { }
 
   ngOnInit() {
     this.resetForm()
@@ -92,6 +93,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token)
         localStorage.setItem('email', res.userData.email)
         localStorage.setItem('username', res.userData.username)
+        localStorage.setItem('account_type', res.userData.method)
         this._auth.sendReload(res.userData.username)
         this._router.navigateByUrl(this.returnUrl)
         }
@@ -119,6 +121,44 @@ export class LoginComponent implements OnInit {
       err => {
           this.resetData = err
           console.log(this.resetData)
+      }
+    )
+  }
+
+
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook"){
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }else if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    } else if (socialPlatform == "linkedin") {
+      socialPlatformProvider = LinkedinLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        //console.log(socialPlatform+" sign in data : " , userData);
+        this.sendGoogleTokenToRestApi(userData.token)
+            
+      }
+    );
+  }
+  
+  sendGoogleTokenToRestApi(token){
+    this._auth.GoogleSignin(token).subscribe(
+      res => {
+        if(res.token !== undefined && res.token !== null){
+          localStorage.setItem('token', res.token)
+          localStorage.setItem('email', res.userData.email)
+          localStorage.setItem('username', res.userData.username)
+          localStorage.setItem('account_type', res.userData.method)
+          this._auth.sendReload(res.userData.username)
+          this._router.navigateByUrl(this.returnUrl)
+          }
+      },
+      err => {
+        console.log(err)
       }
     )
   }

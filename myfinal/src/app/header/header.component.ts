@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Shared/auth.service';
+import { UserAuthService } from '../Shared/user-auth.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: UserAuthService) { }
 
   
   userData:any = {

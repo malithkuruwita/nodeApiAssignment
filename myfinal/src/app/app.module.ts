@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import{FormsModule} from'@angular/forms';
+import { FormsModule } from'@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +12,9 @@ import { DealsComponent } from './deals/deals.component';
 
 import { TokenInterceptorService } from './Shared/token-interceptor.service';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+
+import { SocialLoginModule,AuthServiceConfig } from "angular-6-social-login";
+import { getAuthServiceConfigs } from './socialloginConfig';
 
 @NgModule({
   declarations: [
@@ -27,13 +30,12 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptorService,multi: true},
+              {provide:AuthServiceConfig, useFactory: getAuthServiceConfigs}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

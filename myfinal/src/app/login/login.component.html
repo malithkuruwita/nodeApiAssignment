@@ -33,12 +33,8 @@
           <div id="logA" class="loginA">
           <p style="color:black;margin-bottom: 12px;text-align: center;"> Sign In With Auth</p>
           <form>
-            <a type="button" class="btn btn-lg btn-block"
-              style="color:#fff;background-color:#3b5999;padding: 0.3rem 1rem;"> <span style="float:left;"><i
-                  class="fa fa-facebook-square" aria-hidden="true"></i></span> Facebook sign in</a>
-            <a type="button" class="btn btn-lg btn-block"
-              style="color:#fff;background-color:#4285f4;padding: 0.3rem 1rem;"><span style="float:left;"><i
-                  class="fa fa-google" aria-hidden="true"></i></span> Google Sign in</a>
+            <a (click)="socialSignIn('facebook')" type="button" class="btn btn-lg btn-block" style="color:#fff;background-color:#3b5999;padding: 0.3rem 1rem;"> <span style="float:left;"><i class="fa fa-facebook-square" aria-hidden="true"></i></span>Continue With Facebook</a>
+            <a (click)="socialSignIn('google')" type="button" class="btn btn-lg btn-block" style="color:#fff;background-color:#4285f4;padding: 0.3rem 1rem;"><span style="float:left;"><i class="fa fa-google" aria-hidden="true"></i></span>Continue With Google</a>
           </form>
         </div>
         </div>
